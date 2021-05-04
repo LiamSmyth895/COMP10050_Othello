@@ -4,6 +4,12 @@ Liam Smyth's project for COMP10050 Assignment 2, a board game called Othello
 In this project, each players' information is stored in a struct which contains their colour, score and name. The board is stored as a 2d array.
 I chose to use a 2d array for the board so that I would have some way of linking nearby tiles to each other, a crucial part of deciding whether or not a move is valid.
 
+The board is an integer array with each different type of tile haveing a different number associated with it.
+The outside of the board consists of -1s, to indicate that it is out of bounds and to avoid overflow errors when we check those tiles
+White tiles are 2s.
+Black tiles are 1s.
+Wmpty tiles are 0s.
+
 To check if a move is valid, I needed to check its validity in all eight directions.
 I decided to create a single function to check whether or not a move was valid.
 This function contained 8 sepereate functions that would check the validity in each direction. I did this because the program needs to know in which direction(s) to change the color of the tiles, given that it is a valid move.
