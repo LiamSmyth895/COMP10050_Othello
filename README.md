@@ -8,11 +8,11 @@ The board is an integer array with each different type of tile haveing a differe
 The outside of the board consists of -1s, to indicate that it is out of bounds and to avoid overflow errors when we check those tiles
 White tiles are 2s.
 Black tiles are 1s.
-Wmpty tiles are 0s.
+Empty tiles are 0s.
 
-To check if a move is valid, I needed to check its validity in all eight directions.
+To check if a move is valid, the program needs to check its validity in all eight directions.
 I decided to create a single function to check whether or not a move was valid.
-This function contained 8 sepereate functions that would check the validity in each direction. I did this because the program needs to know in which direction(s) to change the color of the tiles, given that it is a valid move.
+This function contains 8 sepereate functions that would check the validity in each direction. I did this because the program needs to know in which direction(s) to change the color of the tiles, given that it is a valid move.
 
 The game ends when one of two conditions is reached:
 1. When the board is full. This is checked by adding up bothe players' scores and checking whether or not it is less than 64 (the total number of tiles on the board).
@@ -22,3 +22,7 @@ For the program to know which players' turn it is, a new player struct called cu
 At the start of each turn, playerTurn is divided modulo 2. If the result is equal to 0, then it is player 1's turn and their info is copied into currentPlayer.
 Else, it is player 2's turn and their info is copied into currentPlayer.
 At the end of the turn, the scores are updated accordingly.
+
+I have decided to automatically skip a players turn if they do not have any valid move available to them. There is no need for the user to enter "p" as I felt this was unnecessary.
+
+Once the game is finished, the program uses the time.h header file to record the time and date. The outcome of the game and the date/time is written/appended to a text file called othello-results.txt
