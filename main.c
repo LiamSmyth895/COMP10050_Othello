@@ -4,7 +4,7 @@
 
 int main() {
 
-    int i, j;
+    int i, j, winner;
     int turnScore; // variable that keeps track of how many tiles were converted on each turn
     char playerInput[3]; // character array used to record what the player enters as their move
     int playerChoice[2]; // integer array used to store the players move in the form of 2 integer values
@@ -145,31 +145,41 @@ int main() {
 
         else
         {
-            /* Otherwise, if the current player does not have a valid move, increment
-             * the counter and move onto the next player */
-            printf("Player %d has no valid moves.\n", playerTurn + 1);
+            /* Otherwise, if the current player does not have a valid move, ask the to enter "p" for pass
+             * and then increment the counter and move onto the next player */
+            printf("%s does not have any valid moves. Your turn has been passed\n", currentPlayer.name);
             counter++;
             playerTurn++;
         }
     }
 
-    if(counter == 2)
-    {
-        printf("\nThe game has ended because neither player has a valid move.\n");
-    }
-    else
-    {
-        printf("\nThe game has ended because the board is full.\n");
-    }
+    // Tell the players why the game has ended
+    counter == 2? printf("\nThe game has ended because neither player has a valid move.\n") :
+                  printf("\nThe game has ended because the board is full.\n");
 
     if(player1.score > player2.score) // Player 1 is the winner
     {
         printf("%s is the winner with a score of %d\n", player1.name, player1.score);
+        winner = 1;
     }
     else // Player 2 is the winner
     {
         printf("%s is the winner with a score of %d\n", player2.name, player2.score);
+        winner = 2;
     }
+
+    FILE *fp = fopen("othello-results.txt", "a"); // Create a text file to append the game result to
+
+    /* Use the time.h header file to access the current time and copy it into a struct called currentTime */
+    time_t t;
+    t = time(NULL); // no. of seconds that have passed since 1970
+    struct tm currentTime;
+    currentTime = *localtime(&t); // localtime is a function that converts the value in time(NULL) into current date and time
+
+    fprintf(fp, "%s %s %s %d\n", "The winner is", winner == 1? player1.name : player2.name,
+            "with a score of", winner == 1? player1.score : player2.score); // Write the result to the file
+    fprintf(fp, "Date: %d-%d-%d\nTime: %d:%d:%d\n\n", currentTime.tm_mday, currentTime.tm_mon+1, currentTime.tm_year+1900,
+            currentTime.tm_hour, currentTime.tm_min, currentTime.tm_sec); // Append the date and time to the file
 
     return 0;
 }
