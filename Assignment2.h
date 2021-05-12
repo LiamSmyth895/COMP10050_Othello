@@ -6,6 +6,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <time.h>
 
 // Define Black, White and Empty spaces as integers
 #define WHITE 2
