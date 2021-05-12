@@ -5,7 +5,6 @@
 void printBoard(struct Player player1, struct Player player2)
 {
     /* This function prints out the current state of the board and the player's scores */
-
     int i, j;
     // Begin by printing out the names and scores of the players
     printf("\n\tScore: %s (Black) %d:%d %s (White)\n", player1.name, player1.score, player2.score, player2.name);
@@ -33,7 +32,6 @@ void printBoard(struct Player player1, struct Player player2)
             }
         }
         printf("\n%s\n", seperator);
-
     }
 
     printf("\t\ta\tb\tc\td\te\tf\tg\th\n");
@@ -89,7 +87,7 @@ bool isValid(int i, int j, int currentColour)
 bool isValidN(int i, int j, int currentColour)
 {
     // Function to check if this move is valid in a Northern direction
-    bool valid, found = false;
+    bool valid = true, found = false;
     i++; // move the chosen tile up by 1
     if(board[i][j] == EMPTY || board[i][j] == OUTSIDE || board[i][j] == currentColour)
     {
@@ -99,7 +97,6 @@ bool isValidN(int i, int j, int currentColour)
     }
     else // Otherwise, this is possibly a valid move
     {
-        valid = true;
         while(valid && !found)
         {
             i++; // move the tile up by 1
@@ -119,7 +116,7 @@ bool isValidN(int i, int j, int currentColour)
 bool isValidNE(int i, int j, int currentColour)
 {
     // Function to check if this move is valid in a North Eastern direction
-    bool valid, found = false;
+    bool valid = true, found = false;
     i++; j++; // move the chosen tile up by 1 and right by 1
     if(board[i][j] == EMPTY || board[i][j] == OUTSIDE || board[i][j] == currentColour)
     {
@@ -129,7 +126,6 @@ bool isValidNE(int i, int j, int currentColour)
     }
     else // Otherwise, this is possibly a valid move
     {
-        valid = true;
         while(valid && !found)
         {
             i++; j++; // move the chosen tile up by 1 and right by 1
@@ -149,7 +145,7 @@ bool isValidNE(int i, int j, int currentColour)
 bool isValidE(int i, int j, int currentColour)
 {
     // Function to check if this move is valid in a North Eastern direction
-    bool valid, found = false;
+    bool valid = true, found = false;
     j++; // move the chosen tile right by 1
     if(board[i][j] == EMPTY || board[i][j] == OUTSIDE || board[i][j] == currentColour)
     {
@@ -159,7 +155,6 @@ bool isValidE(int i, int j, int currentColour)
     }
     else // Otherwise, this is possibly a valid move
     {
-        valid = true;
         while(valid && !found)
         {
             j++; // move the chosen tile right by 1
@@ -179,7 +174,7 @@ bool isValidE(int i, int j, int currentColour)
 bool isValidSE(int i, int j, int currentColour)
 {
     // Function to check if this move is valid in a North Eastern direction
-    bool valid, found = false;
+    bool valid = true, found = false;
     i--; j++; // move the chosen tile down by 1 and right by 1
     if(board[i][j] == EMPTY || board[i][j] == OUTSIDE || board[i][j] == currentColour)
     {
@@ -189,7 +184,6 @@ bool isValidSE(int i, int j, int currentColour)
     }
     else // Otherwise, this is possibly a valid move
     {
-        valid = true;
         while(valid && !found)
         {
             i--; j++; // move the chosen tile down by 1 and right by 1
@@ -209,7 +203,7 @@ bool isValidSE(int i, int j, int currentColour)
 bool isValidS(int i, int j, int currentColour)
 {
     // Function to check if this move is valid in a North Eastern direction
-    bool valid, found = false;
+    bool valid = true, found = false;
     i--; // move the chosen tile down by 1
     if(board[i][j] == EMPTY || board[i][j] == OUTSIDE || board[i][j] == currentColour)
     {
@@ -219,7 +213,6 @@ bool isValidS(int i, int j, int currentColour)
     }
     else // Otherwise, this is possibly a valid move
     {
-        valid = true;
         while(valid && !found)
         {
             i--; // move the chosen tile down by 1
@@ -239,7 +232,7 @@ bool isValidS(int i, int j, int currentColour)
 bool isValidSW(int i, int j, int currentColour)
 {
     // Function to check if this move is valid in a North Eastern direction
-    bool valid, found = false;
+    bool valid = true, found = false;
     i--; j--; // move the chosen tile down by 1 and left by 1
     if(board[i][j] == EMPTY || board[i][j] == OUTSIDE || board[i][j] == currentColour)
     {
@@ -249,7 +242,6 @@ bool isValidSW(int i, int j, int currentColour)
     }
     else // Otherwise, this is possibly a valid move
     {
-        valid = true;
         while(valid && !found)
         {
             i--; j--; // move the chosen tile down by 1 and left by 1
@@ -269,7 +261,7 @@ bool isValidSW(int i, int j, int currentColour)
 bool isValidW(int i, int j, int currentColour)
 {
     // Function to check if this move is valid in a North Eastern direction
-    bool valid, found = false;
+    bool valid = true, found = false;
     j--; // move the chosen tile left by 1
     if(board[i][j] == EMPTY || board[i][j] == OUTSIDE || board[i][j] == currentColour)
     {
@@ -279,7 +271,6 @@ bool isValidW(int i, int j, int currentColour)
     }
     else // Otherwise, this is possibly a valid move
     {
-        valid = true;
         while(valid && !found)
         {
             j--; // move the chosen tile left by 1
@@ -299,7 +290,7 @@ bool isValidW(int i, int j, int currentColour)
 bool isValidNW(int i, int j, int currentColour)
 {
     // Function to check if this move is valid in a North Eastern direction
-    bool valid, found = false;
+    bool valid = true, found = false;
     i++; j--; // move the chosen tile up by 1 and left by 1
     if(board[i][j] == EMPTY || board[i][j] == OUTSIDE || board[i][j] == currentColour)
     {
@@ -309,7 +300,6 @@ bool isValidNW(int i, int j, int currentColour)
     }
     else // Otherwise, this is possibly a valid move
     {
-        valid = true;
         while(valid && !found)
         {
             i++; j--; // move the chosen tile up by 1 and left by 1
@@ -329,19 +319,17 @@ bool isValidNW(int i, int j, int currentColour)
 int convertInput(char playerInput[], int i)
 {
     /* Function that converts the players move choice from a string to an integer */
-    int output;
-    if(i == 0) // If the second argument is equal to 0, then the first argument is a character integer
+
+    if(i == 0) // If the second argument is equal to 0, then we are converting a character integer
     {
-        output = playerInput[i] - '0';
+        return playerInput[i] - '0';
     }
-    else // Otherwise, the first argument is a alphabetical character between a and h (inclusive)
+    else // Otherwise, we are converting an alphabetical character between a and h (inclusive)
     {
         /* Since 97 is the ascii number for the letter 'a', taking away 96 from the players'
          * input will leave us with an integer between 1 and 8 (inclusive) */
-        output = playerInput[i] - 96;
+        return playerInput[i] - 96;
     }
-
-    return output;
 } // End of convertInput function
 
 int convertTiles(int i, int j, int currentColour)
